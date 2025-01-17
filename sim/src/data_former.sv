@@ -20,12 +20,10 @@ module data_former # (
     logic [P_DATA_WIDTH - 1:0] cnt;
 
     always_ff @( posedge clk_100 or posedge a_rst ) begin
-        // Sync reset is prioritized 
-        if (s_rst) begin
+        if (a_rst) begin
             valid <=  0;
             cnt   <= '0;
-        // Async reset
-        end else if (a_rst) begin
+        end else if (s_rst) begin
             valid <=  0;
             cnt   <= '0;
         end else begin
