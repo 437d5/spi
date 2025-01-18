@@ -6,15 +6,15 @@
 module data_former # (
     parameter P_DATA_WIDTH = 8
 ) (
-    input  logic                      next_count;
-    input  logic                      start_send;
-    input  logic                      clk_100;
-    input  logic                      s_rst;
-    input  logic                      a_rst;
-    input  logic                      ready;
+    input  logic                      next_count,
+    input  logic                      start_send,
+    input  logic                      clk_100,
+    input  logic                      s_rst,
+    input  logic                      a_rst,
+    input  logic                      ready,
             
-    output logic                      valid;
-    output logic [P_DATA_WIDTH - 1:0] data;
+    output logic                      valid,
+    output logic [P_DATA_WIDTH - 1:0] data
 );
 
     logic [P_DATA_WIDTH - 1:0] cnt;
@@ -32,15 +32,12 @@ module data_former # (
                 cnt <= cnt + 1'b1;
             end
 
-            // TODO: test if valid sets to 0 after sending data
-            if (start_send) begin
-                if (ready) begin
-                    valid <= '1;
-                    data <= cnt;
-                end
+            if (start_send && ready) begin
+                valid <= 1;
+                data <= cnt;
+            end else if (valid && ~ready) begin
+                valid <= 0;
             end
-
-            valid <= 0;
         end
     end
 
