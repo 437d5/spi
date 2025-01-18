@@ -36,7 +36,7 @@ module transmitter_tb;
         .SCK_HP(SCK_HP),
         .SCK_LP(SCK_LP),
         .SCK_HN(SCK_HN),
-        .SCK_LN(SCK_LN),
+        .SCK_LN(SCK_LN)
     );
 
     initial begin

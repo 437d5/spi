@@ -24,7 +24,7 @@ module transmitter #(
     output  logic                           SCK_HP,  // 1, posedge
     output  logic                           SCK_LP,  // 0, posedge
     output  logic                           SCK_HN,  // 1, negedge
-    output  logic                           SCK_LN,   // 0, negedge
+    output  logic                           SCK_LN   // 0, negedge
 );
 
     logic busy; // 1 if sending/recieving
