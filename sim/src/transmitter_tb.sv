@@ -51,22 +51,12 @@ module transmitter_tb;
         #20;
         s_rst = 0;
 
-        // Test case 1: Send single data byte
-        data = 8'hF0; // Example data
+        data = 8'hF0; 
         valid = 1;
         #20 valid = 0;
-
-// Test case 3: Check chip select polarity
-        $display("CS = %b, Expected = %b", CS, P_CS_POLAR ? 1'b1 : 1'b0);
-
-        // Test case 4: Observe clock signals
-        #200;
-
-        // Finish simulation
-        $finish;
+        #200 $finish;
     end
 
-    // Monitor signals
     initial begin
         $monitor("Time=%0t, valid=%b, data=%h, ready=%b, MOSI=%b, CS=%b, SCK_HP=%b, SCK_LP=%b, SCK_HN=%b, SCK_LN=%b", 
                  $time, valid, data, ready, MOSI, CS, SCK_HP, SCK_LP, SCK_HN, SCK_LN);
