@@ -47,7 +47,7 @@ module transmitter #(
             clk_pos_cnt <= '0;
             SCK_HP <= 1;
             SCK_LP <= 0;
-        end else begin
+        end else if (busy) begin
             if (clk_pos_cnt == P_CLK_DIV - 1) begin
                 clk_pos_cnt <= '0;
                 SCK_HP <= ~SCK_HP;
@@ -68,7 +68,7 @@ module transmitter #(
             clk_neg_cnt <= '0;
             SCK_HN <= 1;
             SCK_LN <= 0;
-        end else begin
+        end else if (busy) begin
             if (clk_neg_cnt == P_CLK_DIV - 1) begin
                 clk_neg_cnt <= '0;
                 SCK_HN <= ~SCK_HN;
